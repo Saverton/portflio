@@ -9,7 +9,7 @@
 	import { onMount } from 'svelte';
 
   onMount(async () => {
-    const response = await fetch('/api/me');
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/me');
 
     if (response.ok) {
       const loginData = await response.json();

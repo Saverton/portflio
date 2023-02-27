@@ -3,7 +3,7 @@
   const { logout } = admin;
 
   async function handleLogout() {
-    fetch('/api/logout', { method: 'DELETE' });
+    fetch('https://meadows-portfolio.onrender.com/api/logout', { method: 'DELETE' });
     logout();
   }
 </script>

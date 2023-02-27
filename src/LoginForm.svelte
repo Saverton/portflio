@@ -18,7 +18,7 @@
       })
     };
 
-    const response = await fetch('/api/login', configObject);
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/login', configObject);
 
     if (response.ok) {
       console.log('login successful');

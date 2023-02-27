@@ -9,6 +9,8 @@
   let displayedProjects = [];
   let active = 0;
   let hidden = true;
+  let loadingTags = false;
+  let loadingProjects = false;
 
   $: displayedProjects = projects.filter(project => project.tags.includes(filters[active]))
 
@@ -31,17 +33,21 @@
    * Perform an async fetch request to get the filter options
    */
   async function fetchTags() {
+    loadingTags = true;
     const response = await fetch('/api/tags');
     const data = await response.json();
     filters = data.tags;
+    loadingTags = false;
   }
 
   /**
    * Perform an async fetch request to get all projects
    */
   async function fetchProjects() {
+    loadingProjects = true;
     const response = await fetch('/api/projects');
     projects = await response.json();
+    loadingProjects = false;
   }
 
   onMount(async () => {
@@ -58,6 +64,10 @@
   </button>
 
   {#if !hidden}
+    {#if loadingTags}
+      <h2>Loading Tags...</h2>
+    {/if}
+
     <nav transition:slide>
       {#each filters as filter, i}
         <button
@@ -71,6 +81,10 @@
   {/if}
 
   <div>
+    {#if loadingProjects}
+      <h2>Loading Projects...</h2>
+    {/if}
+
     {#each displayedProjects as project, index (`project-${index}`)}
       <ProjectCard {...project} reverse={index % 2 === 1}/>
     {/each}
@@ -85,7 +99,7 @@
     display: flex
     gap: 0.5rem
     justify-content: center
-  
+
   button
     border: none
     padding: 0.75em 1em

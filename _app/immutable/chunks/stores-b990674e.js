@@ -1,1 +1,0 @@
-import{w as o}from"./index-8333c1d0.js";const a=o(!1);function l(){const e={email:null,id:null},{subscribe:s,set:i}=o(e);return{subscribe:s,login:n=>i({email:n.email,id:n.id}),logout:()=>i(e)}}const r=l();export{r as a,a as h};

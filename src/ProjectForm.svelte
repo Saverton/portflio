@@ -24,7 +24,7 @@
       })
     };
 
-    const response = await fetch('/api/projects', configObject);
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/projects', configObject);
     if (response.ok) {
       console.log('Upload successful!');
     } else {

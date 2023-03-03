@@ -6,7 +6,8 @@ export default defineConfig({
 	server: {
 		port: 4000,
 		proxy: {
-			'/api': 'https://meadows-portfolio.onrender.com'
+			'/api': 'http://localhost:3000'
+			// '/api': 'https://meadows-portfolio.onrender.com'
 		}
 	}
 });

@@ -1,6 +1,7 @@
 <script>
   import { admin } from './stores';
 	import { goto } from '$app/navigation';
+	import { getCookie } from './helper/getCookie';
 
   const { login } = admin;
 
@@ -12,7 +13,11 @@
 
     const configObject = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCookie('CSRF_TOKEN')
+      },
       body: JSON.stringify({
         email, password
       })

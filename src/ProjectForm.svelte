@@ -18,6 +18,7 @@
   async function postProject() {
     const configObject = {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': getCookie('CSRF_TOKEN')

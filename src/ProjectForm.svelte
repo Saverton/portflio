@@ -1,4 +1,7 @@
 <script>
+	import { getCookie } from "./helper/getCookie";
+
+
   let tags = [];
   let links = [];
   let title = '';
@@ -15,7 +18,10 @@
   async function postProject() {
     const configObject = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCookie('CSRF_TOKEN')
+      },
       body: JSON.stringify({
         title,
         description,

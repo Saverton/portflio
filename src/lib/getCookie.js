@@ -4,6 +4,9 @@ export const getCookie = (cname) => {
 
   const cookie = cookies.find(c => c.trim().startsWith(name));
 
+  console.log(document.cookie);
+  console.log(cookie);
+
   if (cookie)
     return cookie.slice(name.length);
   else

@@ -1,7 +1,7 @@
 <script>
   import { admin } from './stores';
 	import { goto } from '$app/navigation';
-	import { getCookie } from './helper/getCookie';
+	import { getCookie } from './lib/getCookie';
 
   const { login } = admin;
 
@@ -11,12 +11,14 @@
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const csrfToken = getCookie('CSRF_TOKEN');
+
     const configObject = {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-Token': getCookie('CSRF_TOKEN')
+        'X-CSRF-Token': csrfToken
       },
       body: JSON.stringify({
         email, password

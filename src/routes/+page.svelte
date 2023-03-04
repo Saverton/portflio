@@ -7,15 +7,9 @@
   import ProjectForm from '../ProjectForm.svelte';
 	import Options from '../Options.svelte';
 	import { onMount } from 'svelte';
-  import { getCookie } from '../helper/getCookie';
 
   onMount(async () => {
-    const response = await fetch('https://meadows-portfolio.onrender.com/api/me', {
-      credentials: 'include',
-      headers: {
-        'X-CSRF-Token': getCookie('CSRF_TOKEN')
-      }
-    });
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/me');
 
     if (response.ok) {
       const loginData = await response.json();

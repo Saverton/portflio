@@ -1,5 +1,5 @@
 <script>
-	import { getCookie } from "./helper/getCookie";
+	import { getCookie } from "./lib/getCookie";
 
 
   let tags = [];

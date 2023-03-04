@@ -34,7 +34,9 @@
    */
   async function fetchTags() {
     loadingTags = true;
-    const response = await fetch('https://meadows-portfolio.onrender.com/api/tags');
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/tags', {
+      credentials: 'include'
+    });
     const data = await response.json();
     filters = data.tags;
     loadingTags = false;
@@ -45,7 +47,9 @@
    */
   async function fetchProjects() {
     loadingProjects = true;
-    const response = await fetch('https://meadows-portfolio.onrender.com/api/projects');
+    const response = await fetch('https://meadows-portfolio.onrender.com/api/projects', {
+      credentials: 'include'
+    });
     projects = await response.json();
     loadingProjects = false;
   }
